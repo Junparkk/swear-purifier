@@ -4,14 +4,12 @@ import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { countChars, MAX_CHARS } from '@/lib/sanitize';
 
-export const STYLES = [
+const STYLES = [
   { key: 'professional', label: '🧑‍💼 직장인' },
   { key: 'gentle',       label: '🌸 점잖게' },
   { key: 'poetic',       label: '✍️ 시적으로' },
   { key: 'sassy',        label: '😏 은근히' },
 ] as const;
-
-export type StyleKey = typeof STYLES[number]['key'];
 
 const ANGER_DESC = ['', '살짝 불편한', '약간 짜증난', '중간 불만', '꽤 화난', '극도로 분노한'];
 const ANGER_EMOJIS = ['😤', '😠', '🤬', '💀', '☠️'];
