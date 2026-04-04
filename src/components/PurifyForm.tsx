@@ -4,12 +4,14 @@ import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { countChars, MAX_CHARS } from '@/lib/sanitize';
 
-const STYLES = [
+export const STYLES = [
   { key: 'professional', label: '🧑‍💼 직장인' },
   { key: 'gentle',       label: '🌸 점잖게' },
   { key: 'poetic',       label: '✍️ 시적으로' },
   { key: 'sassy',        label: '😏 은근히' },
 ] as const;
+
+export type StyleKey = typeof STYLES[number]['key'];
 
 const ANGER_DESC = ['', '살짝 불편한', '약간 짜증난', '중간 불만', '꽤 화난', '극도로 분노한'];
 const ANGER_EMOJIS = ['😤', '😠', '🤬', '💀', '☠️'];
@@ -52,7 +54,7 @@ export function PurifyForm({
         />
 
         {/* 글자 수 */}
-        <p className={`text-right text-[11px] transition-colors ${isOverLimit ? 'text-[hsl(18,100%,50%)]' : 'text-muted-foreground'}`}>
+        <p className={`text-right text-[11px] transition-colors ${isOverLimit ? 'text-[hsl(var(--accent))]' : 'text-muted-foreground'}`}>
           {charCount} / {MAX_CHARS}
         </p>
 
@@ -62,7 +64,7 @@ export function PurifyForm({
             <span>분노 강도</span>
             <Badge
               variant="outline"
-              className="bg-[rgba(255,77,0,0.15)] text-[hsl(18,100%,50%)] border-0 text-[11px]"
+              className="bg-[rgba(255,77,0,0.15)] text-[hsl(var(--accent))] border-0 text-[11px]"
             >
               {ANGER_DESC[angerLevel]}
             </Badge>
@@ -73,7 +75,7 @@ export function PurifyForm({
             step={1}
             value={[angerLevel]}
             onValueChange={([v]) => onAngerLevelChange(v)}
-            className="[&_[role=slider]]:bg-[hsl(18,100%,50%)] [&_[role=slider]]:border-0 [&_[role=slider]]:shadow-[0_0_12px_rgba(255,77,0,0.5)]"
+            className="[&_[role=slider]]:bg-[hsl(var(--accent))] [&_[role=slider]]:border-0 [&_[role=slider]]:shadow-[0_0_12px_rgba(255,77,0,0.5)] [&_[data-slot=range]]:bg-[hsl(var(--accent))]"
           />
           <div className="flex justify-between text-lg select-none">
             {ANGER_EMOJIS.map((e) => <span key={e}>{e}</span>)}
@@ -89,10 +91,10 @@ export function PurifyForm({
                 key={key}
                 type="button"
                 onClick={() => onStyleChange(key)}
-                className={`px-4 py-1.5 rounded-full border text-xs font-light transition-all ${
+                className={`px-4 py-1.5 rounded-full border text-xs transition-all ${
                   style === key
-                    ? 'bg-[hsl(18,100%,50%)] border-[hsl(18,100%,50%)] text-white font-medium'
-                    : 'border-border text-muted-foreground hover:border-[hsl(18,100%,50%)] hover:text-foreground'
+                    ? 'bg-[hsl(var(--accent))] border-[hsl(var(--accent))] text-white font-medium'
+                    : 'border-border text-muted-foreground font-light hover:border-[hsl(var(--accent))] hover:text-foreground'
                 }`}
               >
                 {label}
