@@ -2,7 +2,8 @@
 // U+180E, U+2800 도 포함 (알려진 bypass 문자)
 const INVISIBLE_RE = /[\u180E\u200B-\u200F\u2028-\u202F\u205F-\u206F\u2800\uFEFF\u00AD\uE000-\uF8FF]/g;
 
-export const MAX_CHARS = Number(import.meta.env.VITE_MAX_CHARS) || 300;
+const _envMax = Number(import.meta.env.VITE_MAX_CHARS);
+export const MAX_CHARS = _envMax > 0 ? _envMax : 300;
 
 /**
  * 입력 텍스트에서 invisible 문자를 제거하고 공백을 정규화.
