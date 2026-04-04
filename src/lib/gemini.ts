@@ -1,3 +1,5 @@
+import { MAX_CHARS } from './sanitize';
+
 const STYLE_MAP: Record<string, string> = {
   professional: '직장인 말투로, 정중하고 전문적이게',
   gentle:       '매우 부드럽고 따뜻하게, 상대방을 배려하는 말투로',
@@ -6,9 +8,6 @@ const STYLE_MAP: Record<string, string> = {
 };
 
 const ANGER_DESC = ['', '살짝 불편한', '약간 짜증난', '중간 불만', '꽤 화난', '극도로 분노한'];
-
-const _envMax = Number(import.meta.env.VITE_MAX_CHARS);
-const MAX_CHARS = _envMax > 0 ? _envMax : 300;
 
 export interface PurifyOptions {
   text: string;
@@ -22,6 +21,7 @@ export interface PurifyOptions {
  */
 export async function purifyText({ text, style, angerLevel }: PurifyOptions): Promise<string> {
   const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+  if (!apiKey) throw new Error('VITE_GEMINI_API_KEY 환경변수가 설정되지 않았습니다.');
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=${apiKey}`;
 
   const styleDesc = STYLE_MAP[style] ?? STYLE_MAP.professional;
