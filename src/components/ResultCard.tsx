@@ -8,19 +8,19 @@ interface ResultCardProps {
 
 export function ResultCard({ result, onCopy, onReset }: ResultCardProps) {
   return (
-    <Card className="bg-[hsl(var(--clean) / 0.05)] border-[hsl(var(--clean) / 0.2)] rounded-2xl animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <Card className="bg-[hsl(var(--clean))]/5 border-[hsl(var(--clean))]/20 rounded-2xl animate-in fade-in slide-in-from-bottom-4 duration-500">
       <CardContent className="p-7 space-y-5">
         {/* 결과 레이블 */}
         <div className="flex items-center gap-2 text-[11px] uppercase tracking-widest text-[hsl(var(--clean))]">
           ✨ 순화된 말
-          <div className="flex-1 h-px bg-[hsl(var(--clean) / 0.2)]" />
+          <div className="flex-1 h-px bg-[hsl(var(--clean))]/20" />
         </div>
 
         {/* 결과 텍스트 */}
         <p className="text-[16px] font-light leading-relaxed min-h-[60px]">{result}</p>
 
         {/* 액션 버튼 */}
-        <div className="flex gap-2.5 pt-4 border-t border-[hsl(var(--clean) / 0.1)]">
+        <div className="flex gap-2.5 pt-4 border-t border-[hsl(var(--clean))]/10">
           <button
             type="button"
             onClick={onCopy}

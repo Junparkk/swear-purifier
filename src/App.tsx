@@ -40,9 +40,9 @@ export default function App() {
 
   const handleCopy = useCallback(() => {
     if (!result) return;
-    navigator.clipboard.writeText(result).then(() =>
-      toast.success('복사했어요 📋')
-    );
+    navigator.clipboard.writeText(result)
+      .then(() => toast.success('복사했어요 📋'))
+      .catch(() => toast.error('복사에 실패했어요.'));
   }, [result]);
 
   const handleReset = useCallback(() => {
