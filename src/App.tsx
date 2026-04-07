@@ -108,7 +108,7 @@ export default function App() {
           animation: 'gradMove 4s linear infinite',
         }}
       >
-        <div className="flex whitespace-nowrap" style={{ animation: 'marquee 36s linear infinite' }}>
+        <div className="whitespace-nowrap" style={{ display: 'flex', width: 'max-content', animation: 'marquee 36s linear infinite', willChange: 'transform' }}>
           {marqueeItems.map((t, i) => (
             <span key={i} className="text-[11px] font-bold text-white px-5 tracking-widest" style={{ textShadow: '1px 1px 0 rgba(0,0,0,0.4)' }}>
               {t}
@@ -118,12 +118,12 @@ export default function App() {
       </div>
 
       {/* 본문 */}
-      <div className="relative z-10 max-w-[520px] mx-auto px-4 pt-[52px] pb-20">
+      <div className={`relative z-10 max-w-[520px] mx-auto px-2 pt-[28px] ${step === 'result' ? 'h-[calc(100svh-28px)] flex flex-col' : 'pb-20 px-4'}`}>
 
-        {/* 피처폰 헤더 */}
-        <div className="mb-5 mt-4" style={{ animation: 'fadeUp 0.5s ease both' }}>
+        {/* 피처폰 헤더 — 결과 화면에서는 숨김 */}
+        <div className="mb-5 mt-4" style={{ display: step === 'result' ? 'none' : undefined, animation: 'fadeUp 0.5s ease both' }}>
           <div
-            className="rounded-lg p-4 relative"
+            className="rounded-lg p-4 relative overflow-hidden"
             style={{
               background: 'var(--sky)',
               border: '4px solid #3a3a4a',
@@ -131,43 +131,56 @@ export default function App() {
             }}
           >
             {/* 상태바 */}
-            <div className="flex justify-between items-center mb-3">
-              {/* 신호 */}
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="#1a1a2e">
-                <rect x="2" y="14" width="3" height="6" rx="1"/>
-                <rect x="7" y="10" width="3" height="10" rx="1"/>
-                <rect x="12" y="6" width="3" height="14" rx="1"/>
-                <rect x="17" y="2" width="3" height="18" rx="1" opacity="0.3"/>
-              </svg>
-              {/* 메일 */}
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="#1a1a2e">
-                <rect x="2" y="5" width="20" height="14" rx="2"/>
-                <polyline points="2,5 12,14 22,5" fill="none" stroke="#7ec8e3" strokeWidth="2"/>
-              </svg>
+            <div className="lcd-scanlines-sky relative overflow-hidden rounded-t-lg px-4 pt-2 pb-2 mb-3 -mx-4 -mt-4">
+            <div className="flex justify-between items-center relative z-[2]">
+              {/* 신호 + 안테나 */}
+              <div className="flex items-center gap-1.5">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#1a1a2e">
+                  <rect x="2" y="14" width="3" height="6" rx="1"/>
+                  <rect x="7" y="10" width="3" height="10" rx="1"/>
+                  <rect x="12" y="6" width="3" height="14" rx="1"/>
+                  <rect x="17" y="2" width="3" height="18" rx="1" opacity="0.3"/>
+                </svg>
+                {/* 안테나 픽토그램 */}
+                <svg width="12" height="16" viewBox="0 0 12 20" fill="#1a1a2e">
+                  <line x1="6" y1="20" x2="6" y2="8" stroke="#1a1a2e" strokeWidth="2"/>
+                  <line x1="6" y1="8" x2="1" y2="2" stroke="#1a1a2e" strokeWidth="1.5"/>
+                  <line x1="6" y1="8" x2="11" y2="2" stroke="#1a1a2e" strokeWidth="1.5"/>
+                  <circle cx="6" cy="8" r="2" fill="#1a1a2e"/>
+                </svg>
+              </div>
+              {/* 시간 */}
+              <span className="font-mono font-bold text-[13px] tracking-widest" style={{ color: '#1a1a2e' }}>
+                {new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit', hour12: false })}
+              </span>
               {/* 배터리 */}
               <svg width="18" height="18" viewBox="0 0 24 24" fill="#1a1a2e">
                 <rect x="1" y="7" width="18" height="10" rx="2"/>
                 <rect x="19" y="10" width="4" height="4" rx="1"/>
-                <rect x="3" y="9" width="5" height="6" rx="1" fill="#7ec8e3"/>
-                <rect x="10" y="9" width="5" height="6" rx="1" fill="#7ec8e3"/>
+                <rect x="3" y="9" width="5" height="6" rx="1" fill="#1a1a2e" opacity="0.7"/>
+                <rect x="10" y="9" width="5" height="6" rx="1" fill="#1a1a2e" opacity="0.7"/>
               </svg>
             </div>
-            {/* 타이틀 */}
-            <div className="font-['Black_Han_Sans'] text-[#1a1a2e] leading-tight tracking-tight" style={{ fontSize: 'clamp(1.1rem,5vw,1.5rem)' }}>
-              나는 화가났지만<br />
-              <span
-                className="inline-block mt-1 rotate-[-1deg]"
-                style={{ background: '#1a1a2e', color: 'var(--sky)', padding: '0 6px' }}
-              >
-                어른이니까
-              </span>
             </div>
-            <div className="flex justify-end mt-2.5">
+            {/* 타이틀 */}
+            <div className="text-center mt-1">
               <div
-                className="text-[13px] font-bold px-3.5 py-[3px] rounded-[3px]"
-                style={{ background: '#1a1a2e', color: 'var(--sky)' }}
+                className="leading-[1.1] tracking-tight text-[#1a1a2e]"
+                style={{ fontFamily: "'Byeoljari', 'Black Han Sans', sans-serif", fontWeight: 700, fontSize: 'clamp(1.6rem,8vw,2.4rem)' }}
               >
-                전송
+                ㄴr는 화ㄱr났ズl口ざ
+              </div>
+              <div
+                className="leading-[1.2] tracking-tight text-[#1a1a2e] mt-1"
+                style={{ fontFamily: "'Byeoljari', 'Black Han Sans', sans-serif", fontWeight: 700, fontSize: 'clamp(1.6rem,8vw,2.4rem)' }}
+              >
+                øł른○lLI까
+              </div>
+              <div
+                className="mt-3 tracking-wide"
+                style={{ fontFamily: "'Noto Sans KR', sans-serif", fontWeight: 700, fontSize: 'clamp(0.65rem,3vw,0.85rem)', color: 'rgba(26,26,46,0.6)' }}
+              >
+                ✧˖°.《★~ Yok hago sipda ~( o̴̶̷̥᷅ ⌓ o̴̶̷᷄)
               </div>
             </div>
           </div>
@@ -203,7 +216,9 @@ export default function App() {
         {step === 'loading' && <LoadingScreen />}
 
         {step === 'result' && result && (
-          <ResultCard result={result} onCopy={handleCopy} onReset={handleReset} />
+          <div className="flex-1 min-h-0">
+            <ResultCard result={result} onCopy={handleCopy} onReset={handleReset} />
+          </div>
         )}
 
         {/* 하단 서명 */}
