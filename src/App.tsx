@@ -118,7 +118,7 @@ export default function App() {
       </div>
 
       {/* 본문 */}
-      <div className={`relative z-10 max-w-[520px] mx-auto px-2 pt-[28px] ${step === 'result' ? 'h-[calc(100svh-28px)] flex flex-col px-4' : 'pb-20 px-4'}`}>
+      <div className={`relative z-10 max-w-[520px] mx-auto px-2 pt-[28px] ${step === 'result' ? 'h-[calc(100svh-28px)] flex flex-col px-4 py-4' : 'pb-20 px-4'}`}>
 
         {/* 피처폰 헤더 — 결과 화면에서는 숨김 */}
         <div className="mb-5 mt-4" style={{ display: step === 'result' ? 'none' : undefined, animation: 'fadeUp 0.5s ease both' }}>
@@ -223,20 +223,6 @@ export default function App() {
           </div>
         )}
 
-        {/* 하단 서명 */}
-        <div className="text-center mt-7" style={{ animation: 'fadeUp 0.5s 0.35s ease both' }}>
-          <span
-            className="inline-block text-[11px] tracking-[0.15em] uppercase pt-2.5"
-            style={{
-              color: 'rgba(126,200,227,0.3)',
-              borderTop: '1px solid rgba(255,110,180,0.15)',
-            }}
-          >
-            나는 화가났지만{' '}
-            <span style={{ color: 'var(--pink)', animation: 'heartbeat 1.5s infinite', display: 'inline-block' }}>♥</span>
-            {' '}어른이니까
-          </span>
-        </div>
 
       </div>
 

@@ -23,10 +23,10 @@ interface ResultCardProps {
 }
 
 const NUMPAD = [
-  [{ n: '1', s: 'oo' },    { n: '2', s: 'ABC 🌸' }, { n: '3', s: 'DEF' }],
-  [{ n: '4', s: 'GHI 🌺' },{ n: '5', s: 'JKL' },   { n: '6', s: 'MNO 🌈' }],
-  [{ n: '7', s: 'PQRS' },  { n: '8', s: 'TUV 🌺' },{ n: '9', s: 'WXYZ' }],
-  [{ n: '* +', s: '' },    { n: '0', s: '_ @' },    { n: '♪♫ #', s: '' }],
+  [{ n: '1', s: 'oo' },   { n: '2', s: 'ABC' }, { n: '3', s: 'DEF' }],
+  [{ n: '4', s: 'GHI' },  { n: '5', s: 'JKL' }, { n: '6', s: 'MNO' }],
+  [{ n: '7', s: 'PQRS' }, { n: '8', s: 'TUV' }, { n: '9', s: 'WXYZ' }],
+  [{ n: '* +', s: '' },   { n: '0', s: '_ @' }, { n: '♪♫ #', s: '' }],
 ];
 
 const BTN: React.CSSProperties = {
@@ -195,9 +195,15 @@ export function ResultCard({ result, onCopy, onReset }: ResultCardProps) {
         {NUMPAD.map((row, ri) => (
           <div key={ri} className="grid grid-cols-3 gap-1">
             {row.map(({ n, s }) => (
-              <div key={n} className="py-1.5 rounded-lg text-center select-none" style={BTN}>
-                <div className="text-[14px] font-bold leading-none" style={{ color: 'rgba(220,220,240,0.9)' }}>{n}</div>
-                {s && <div className="text-[8px] mt-0.5 tracking-wider" style={{ color: 'rgba(150,150,180,0.6)' }}>{s}</div>}
+              <div key={n} className="py-1.5 rounded-lg flex items-center justify-center select-none" style={BTN}>
+                {s ? (
+                  <div className="flex items-center gap-1">
+                    <div className="w-6 text-right text-[14px] font-bold leading-none" style={{ color: 'rgba(220,220,240,0.9)' }}>{n}</div>
+                    <div className="w-8 text-left text-[8px] tracking-wider" style={{ color: 'rgba(150,150,180,0.6)' }}>{s}</div>
+                  </div>
+                ) : (
+                  <div className="text-[14px] font-bold leading-none" style={{ color: 'rgba(220,220,240,0.9)' }}>{n}</div>
+                )}
               </div>
             ))}
           </div>
