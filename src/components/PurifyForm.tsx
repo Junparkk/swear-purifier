@@ -3,7 +3,7 @@ import { countChars, MAX_CHARS } from '@/lib/sanitize';
 
 const STYLES = [
   { key: 'professional', icon: '🧑‍💼', label: '직장인' },
-  { key: 'gentle',       icon: '🌸', label: '점잖게' },
+  { key: 'gentle',       icon: '🧘', label: '점잖게' },
   { key: 'poetic',       icon: '✍️', label: '시적으로' },
   { key: 'sassy',        icon: '😏', label: '은근히 비꼬기' },
 ] as const;
@@ -44,7 +44,7 @@ export function PurifyForm({ text, onTextChange, style, onStyleChange, angerLeve
       />
 
       {/* 입력 섹션 */}
-      <div className="flex items-center gap-2 text-[11px] font-bold tracking-[0.12em] uppercase mb-2.5" style={{ color: 'var(--pink)' }}>
+      <div className="flex items-center gap-2 text-[13px] font-bold tracking-[0.12em] uppercase mb-2.5" style={{ color: 'var(--pink)' }}>
         💢 하고 싶은 말
         <div className="flex-1 h-px" style={{ background: 'rgba(255,110,180,0.2)' }} />
       </div>
@@ -79,11 +79,11 @@ export function PurifyForm({ text, onTextChange, style, onStyleChange, angerLeve
         style={{ borderTop: '1px dashed rgba(255,110,180,0.2)' }}
       >
         <div className="flex justify-between items-center mb-2.5">
-          <span className="text-[11px] font-bold tracking-[0.1em] uppercase" style={{ color: 'rgba(255,110,180,0.8)' }}>
+          <span className="text-[13px] font-bold tracking-[0.1em] uppercase" style={{ color: 'rgba(255,110,180,0.8)' }}>
             ⚡ 분노 강도
           </span>
           <span
-            className="text-[10px] font-bold tracking-[0.05em] px-2.5 py-0.5 rounded-[2px]"
+            className="text-[12px] font-bold tracking-[0.05em] px-2.5 py-0.5 rounded-[2px]"
             style={{
               background: 'rgba(255,110,180,0.15)',
               border: '1px solid rgba(255,110,180,0.4)',
@@ -98,7 +98,7 @@ export function PurifyForm({ text, onTextChange, style, onStyleChange, angerLeve
           value={[angerLevel]}
           onValueChange={([v]) => onAngerLevelChange(v)}
         />
-        <div className="flex justify-between mt-1.5 text-base select-none">
+        <div className="flex justify-between mt-1.5 text-2xl select-none">
           {ANGER_EMOJIS.map((e) => <span key={e}>{e}</span>)}
         </div>
       </div>
@@ -108,7 +108,7 @@ export function PurifyForm({ text, onTextChange, style, onStyleChange, angerLeve
         className="mt-4 pt-4"
         style={{ borderTop: '1px dashed rgba(255,110,180,0.2)' }}
       >
-        <div className="flex items-center gap-2 text-[11px] font-bold tracking-[0.12em] uppercase mb-2.5" style={{ color: 'var(--pink)' }}>
+        <div className="flex items-center gap-2 text-[13px] font-bold tracking-[0.12em] uppercase mb-2.5" style={{ color: 'var(--pink)' }}>
           🎭 순화 스타일
           <div className="flex-1 h-px" style={{ background: 'rgba(255,110,180,0.2)' }} />
         </div>
@@ -130,7 +130,7 @@ export function PurifyForm({ text, onTextChange, style, onStyleChange, angerLeve
                 color: 'rgba(200,230,255,0.6)',
               }}
             >
-              <span className="block text-lg mb-1">{icon}</span>
+              <span className="block text-2xl mb-1">{icon}</span>
               {label}
             </button>
           ))}

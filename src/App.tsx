@@ -118,12 +118,12 @@ export default function App() {
       </div>
 
       {/* 본문 */}
-      <div className={`relative z-10 max-w-[520px] mx-auto px-2 pt-[28px] ${step === 'result' ? 'h-[calc(100svh-28px)] flex flex-col' : 'pb-20 px-4'}`}>
+      <div className={`relative z-10 max-w-[520px] mx-auto px-2 pt-[28px] ${step === 'result' ? 'h-[calc(100svh-28px)] flex flex-col px-4' : 'pb-20 px-4'}`}>
 
         {/* 피처폰 헤더 — 결과 화면에서는 숨김 */}
         <div className="mb-5 mt-4" style={{ display: step === 'result' ? 'none' : undefined, animation: 'fadeUp 0.5s ease both' }}>
           <div
-            className="rounded-lg p-4 relative overflow-hidden"
+            className="lcd-scanlines-sky rounded-lg p-4 relative overflow-hidden"
             style={{
               background: 'var(--sky)',
               border: '4px solid #3a3a4a',
@@ -131,7 +131,7 @@ export default function App() {
             }}
           >
             {/* 상태바 */}
-            <div className="lcd-scanlines-sky relative overflow-hidden rounded-t-lg px-4 pt-2 pb-2 mb-3 -mx-4 -mt-4">
+            <div className="relative overflow-hidden rounded-t-lg px-4 pt-2 pb-2 mb-3 -mx-4 -mt-4">
             <div className="flex justify-between items-center relative z-[2]">
               {/* 신호 + 안테나 */}
               <div className="flex items-center gap-1.5">
@@ -165,19 +165,19 @@ export default function App() {
             {/* 타이틀 */}
             <div className="text-center mt-1">
               <div
-                className="leading-[1.1] tracking-tight text-[#1a1a2e]"
+                className="leading-[1.1] tracking-tight text-[#1a1a2e] relative z-[2]"
                 style={{ fontFamily: "'Byeoljari', 'Black Han Sans', sans-serif", fontWeight: 700, fontSize: 'clamp(1.6rem,8vw,2.4rem)' }}
               >
                 ㄴr는 화ㄱr났ズl口ざ
               </div>
               <div
-                className="leading-[1.2] tracking-tight text-[#1a1a2e] mt-1"
+                className="leading-[1.2] tracking-tight text-[#1a1a2e] mt-1 relative z-[2]"
                 style={{ fontFamily: "'Byeoljari', 'Black Han Sans', sans-serif", fontWeight: 700, fontSize: 'clamp(1.6rem,8vw,2.4rem)' }}
               >
                 øł른○lLI까
               </div>
               <div
-                className="mt-3 tracking-wide"
+                className="mt-3 tracking-wide relative z-[2]"
                 style={{ fontFamily: "'Noto Sans KR', sans-serif", fontWeight: 700, fontSize: 'clamp(0.65rem,3vw,0.85rem)', color: 'rgba(26,26,46,0.6)' }}
               >
                 ✧˖°.《★~ Yok hago sipda ~( o̴̶̷̥᷅ ⌓ o̴̶̷᷄)
@@ -199,8 +199,10 @@ export default function App() {
             <button
               type="button"
               onClick={handlePurify}
-              className="w-full py-[16px] rounded-lg font-['Black_Han_Sans'] text-[18px] tracking-[0.05em] text-white relative overflow-hidden mb-3.5 transition-all hover:-translate-y-1 active:translate-y-0.5"
+              className="w-full py-[16px] rounded-lg text-[18px] tracking-[0.05em] text-white relative overflow-hidden mb-3.5 transition-all hover:-translate-y-1 active:translate-y-0.5"
               style={{
+                fontFamily: "'Byeoljari', 'Black Han Sans', sans-serif",
+                fontWeight: 700,
                 background: 'linear-gradient(135deg, var(--pink), var(--purple))',
                 boxShadow: '0 4px 20px rgba(255,110,180,0.35), 0 2px 0 rgba(0,0,0,0.3)',
                 textShadow: '1px 1px 0 rgba(0,0,0,0.3)',
