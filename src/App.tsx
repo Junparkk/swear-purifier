@@ -166,13 +166,13 @@ export default function App() {
             <div className="text-center mt-1">
               <div
                 className="leading-[1.1] tracking-tight text-[#1a1a2e] relative z-[2]"
-                style={{ fontFamily: "'Byeoljari', 'Black Han Sans', sans-serif", fontWeight: 700, fontSize: 'clamp(1.6rem,8vw,2.4rem)' }}
+                style={{ fontFamily: "'Byeoljari', 'Black Han Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif", fontWeight: 700, fontSize: 'clamp(1.6rem,8vw,2.4rem)' }}
               >
                 ㄴr는 화ㄱr났ズl口ざ
               </div>
               <div
                 className="leading-[1.2] tracking-tight text-[#1a1a2e] mt-1 relative z-[2]"
-                style={{ fontFamily: "'Byeoljari', 'Black Han Sans', sans-serif", fontWeight: 700, fontSize: 'clamp(1.6rem,8vw,2.4rem)' }}
+                style={{ fontFamily: "'Byeoljari', 'Black Han Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif", fontWeight: 700, fontSize: 'clamp(1.6rem,8vw,2.4rem)' }}
               >
                 øł른○lLI까
               </div>
@@ -180,7 +180,7 @@ export default function App() {
                 className="mt-3 tracking-wide relative z-[2]"
                 style={{ fontFamily: "'Noto Sans KR', sans-serif", fontWeight: 700, fontSize: 'clamp(0.65rem,3vw,0.85rem)', color: 'rgba(26,26,46,0.6)' }}
               >
-                ✧˖°.《★~ Yok hago sipda ~( o̴̶̷̥᷅ ⌓ o̴̶̷᷄)
+                ✧˖°.《★~ Yok hago sipda ~( ; ⌓ ; )
               </div>
             </div>
           </div>
@@ -201,7 +201,7 @@ export default function App() {
               onClick={handlePurify}
               className="w-full py-[16px] rounded-lg text-[18px] tracking-[0.05em] text-white relative overflow-hidden mb-3.5 transition-all hover:-translate-y-1 active:translate-y-0.5"
               style={{
-                fontFamily: "'Byeoljari', 'Black Han Sans', sans-serif",
+                fontFamily: "'Byeoljari', 'Black Han Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif",
                 fontWeight: 700,
                 background: 'linear-gradient(135deg, var(--pink), var(--purple))',
                 boxShadow: '0 4px 20px rgba(255,110,180,0.35), 0 2px 0 rgba(0,0,0,0.3)',

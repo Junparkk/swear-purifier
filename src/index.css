@@ -64,7 +64,7 @@
 body {
   background-color: var(--dark);
   color: hsl(var(--foreground));
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Sans KR', 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
   margin: 0;
