@@ -43,7 +43,7 @@ export function ResultCard({ result, onCopy, onReset }: ResultCardProps) {
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
-    const check = () => setHasMore(el.scrollHeight > el.clientHeight + 4);
+    const check = () => setHasMore(el.scrollTop + el.clientHeight < el.scrollHeight - 4);
     check();
     el.addEventListener('scroll', check);
     window.addEventListener('resize', check);
