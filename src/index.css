@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Gmarket+Sans:wght@300;500;700&family=Noto+Serif+KR:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;700;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,27 +6,35 @@
 
 @layer base {
   :root {
-    --background: 0 0% 5%;
-    --foreground: 36 14% 93%;
-    --card: 0 0% 8%;
-    --card-foreground: 36 14% 93%;
-    --border: 0 0% 16%;
-    --muted: 0 0% 40%;
-    --muted-foreground: 0 0% 40%;
-    --accent: 18 100% 50%;
-    --accent-foreground: 0 0% 100%;
-    --radius: 0.75rem;
-    --primary: 18 100% 50%;
+    --background: 240 60% 5%;
+    --foreground: 210 40% 92%;
+    --card: 240 50% 7%;
+    --card-foreground: 210 40% 92%;
+    --border: 240 30% 14%;
+    --muted: 240 30% 12%;
+    --muted-foreground: 215 20% 50%;
+    --radius: 0.5rem;
+    --primary: 330 100% 71%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 8%;
-    --secondary-foreground: 36 14% 93%;
+    --secondary: 240 50% 7%;
+    --secondary-foreground: 210 40% 92%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --ring: 18 100% 50%;
-    --popover: 0 0% 8%;
-    --popover-foreground: 36 14% 93%;
-    --input: 0 0% 16%;
-    --clean: 161 100% 45%;
+    --ring: 330 100% 71%;
+    --popover: 240 50% 7%;
+    --popover-foreground: 210 40% 92%;
+    --input: 240 30% 14%;
+    --accent: 330 100% 71%;
+    --accent-foreground: 0 0% 100%;
+
+    /* y2k palette */
+    --sky: #7ec8e3;
+    --sky-light: #b8e0f0;
+    --pink: #ff6eb4;
+    --pink-light: #ffb3d9;
+    --purple: #b366ff;
+    --green: #66ffb3;
+    --dark: #0a0a1a;
   }
 }
 
@@ -36,9 +44,9 @@
 }
 
 body {
-  background-color: hsl(var(--background));
+  background-color: var(--dark);
   color: hsl(var(--foreground));
-  font-family: 'Gmarket Sans', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
   margin: 0;
@@ -49,9 +57,81 @@ body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background-image:
-    radial-gradient(ellipse 60% 40% at 20% 20%, rgba(255,77,0,0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 50% at 80% 80%, rgba(255,184,0,0.06) 0%, transparent 60%);
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, #1a0a3e 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 0% 50%, #0a1a3e 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 100% 50%, #1a0a2e 0%, transparent 50%),
+    #050510;
   pointer-events: none;
   z-index: 0;
+}
+
+/* ── 별 ── */
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle var(--d, 3s) infinite ease-in-out;
+  opacity: 0;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* ── 마퀴 ── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes gradMove {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* ── 데코 ── */
+@keyframes floatDeco {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.1; }
+  50%       { transform: translateY(-12px) rotate(15deg); opacity: 0.25; }
+}
+
+/* ── 말풍선 화살표 ── */
+.result-bubble {
+  position: relative;
+}
+.result-bubble::before {
+  content: '▲';
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  font-size: 10px;
+  color: rgba(102, 255, 179, 0.25);
+  transform: scaleX(0.7);
+  line-height: 1;
+}
+
+/* ── 로딩 점 ── */
+@keyframes dotBounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40%           { transform: scale(1.1); opacity: 1; }
+}
+
+/* ── heartbeat ── */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.3); }
+}
+
+/* ── popIn ── */
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── fadeUp ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
