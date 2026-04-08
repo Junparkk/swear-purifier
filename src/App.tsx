@@ -4,6 +4,7 @@ import { PurifyForm } from "@/components/PurifyForm";
 import { ResultCard } from "@/components/ResultCard";
 import { LoadingScreen } from "@/components/LoadingScreen";
 import { AdBanner } from "@/components/AdBanner";
+import { SplashScreen } from "@/components/SplashScreen";
 import { validateInput } from "@/lib/sanitize";
 import { purifyText } from "@/lib/gemini";
 
@@ -53,6 +54,7 @@ function Stars() {
 }
 
 export default function App() {
+  const [splash, setSplash] = useState(true);
   const [step, setStep] = useState<Step>("form");
   const [text, setText] = useState("");
   const [style, setStyle] = useState("professional");
@@ -106,6 +108,7 @@ export default function App() {
 
   return (
     <>
+      {splash && <SplashScreen onDone={() => setSplash(false)} />}
       <Stars />
 
       {/* 데코 */}
@@ -326,22 +329,17 @@ export default function App() {
         )}
       </div>
 
-      {/* 하단 광고 배너 */}
+      {/* 푸터 */}
       {step === "form" && (
-        <div className="relative z-10 max-w-[520px] mx-auto px-4">
-          <AdBanner position="bottom" />
+        <div className="relative z-10 max-w-[520px] mx-auto px-4 pb-4 text-center">
+          <a
+            href="/privacy.html"
+            className="text-[11px] text-white/30 hover:text-white/50 transition-colors inline-block"
+          >
+            개인정보처리방침
+          </a>
         </div>
       )}
-
-      {/* 푸터 */}
-      <footer className="relative z-10 text-center pb-3 mt-1">
-        <a
-          href="/privacy.html"
-          className="text-[11px] text-white/30 hover:text-white/50 transition-colors"
-        >
-          개인정보처리방침
-        </a>
-      </footer>
 
       <Toaster richColors position="bottom-center" />
     </>

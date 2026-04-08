@@ -202,3 +202,9 @@ body::before {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* ── 스플래시 크레딧롤 ── */
+@keyframes creditRoll {
+  0%   { transform: translateY(100vh); }
+  100% { transform: translateY(-100%); }
+}
