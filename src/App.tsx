@@ -6,6 +6,7 @@ import { LoadingScreen } from "@/components/LoadingScreen";
 import { SplashScreen } from "@/components/SplashScreen";
 import { validateInput } from "@/lib/sanitize";
 import { purifyText } from "@/lib/gemini";
+import { trackEvent } from "@/lib/analytics";
 
 type Step = "form" | "loading" | "result";
 
@@ -75,6 +76,7 @@ export default function App() {
         style,
         angerLevel,
       });
+      trackEvent('purify', { style, anger_level: angerLevel });
       setResult(purified);
       setStep("result");
       window.scrollTo({ top: 0, behavior: 'instant' });
@@ -89,7 +91,10 @@ export default function App() {
     if (!result) return;
     navigator.clipboard
       .writeText(result)
-      .then(() => toast.success("복사했어요 📋"))
+      .then(() => {
+        trackEvent('copy_result');
+        toast.success("복사했어요 📋");
+      })
       .catch(() => toast.error("복사에 실패했어요."));
   }, [result]);
 
