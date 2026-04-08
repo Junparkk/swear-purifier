@@ -3,7 +3,6 @@ import { toast, Toaster } from "sonner";
 import { PurifyForm } from "@/components/PurifyForm";
 import { ResultCard } from "@/components/ResultCard";
 import { LoadingScreen } from "@/components/LoadingScreen";
-import { AdBanner } from "@/components/AdBanner";
 import { SplashScreen } from "@/components/SplashScreen";
 import { validateInput } from "@/lib/sanitize";
 import { purifyText } from "@/lib/gemini";
