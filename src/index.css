@@ -208,3 +208,15 @@ body::before {
   0%   { transform: translateY(100vh); }
   100% { transform: translateY(-100%); }
 }
+
+/* 중간부터 시작 */
+@keyframes creditRollMid {
+  0%   { transform: translateY(30vh); }
+  100% { transform: translateY(-100%); }
+}
+
+/* CRT 롤링 바 */
+@keyframes tvRoll {
+  0%   { top: 110%; }
+  100% { top: -20%; }
+}
