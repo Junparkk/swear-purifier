@@ -30,6 +30,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const styleDesc = STYLE_MAP[style] ?? STYLE_MAP.professional;
   const anger = ANGER_DESC[Math.min(Math.max(angerLevel, 1), 5)] || '중간 불만';
 
+  const inputLen = [...safeText].length;
+  const lengthRule = style !== 'poetic'
+    ? `6. 결과 글자 수는 원문(${inputLen}자)과 비슷하게 유지하세요. 원문보다 2배 이상 길어지지 마세요.\n`
+    : '';
+
   const prompt =
     `당신은 한국어 감정 표현의 달인입니다. ` +
     `아래 원문은 ${anger} 감정을 담은 글로, 욕설이나 거친 표현이 포함되어 있을 수 있습니다.\n\n` +
@@ -38,8 +43,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     `2. ${styleDesc} 스타일로 표현하세요.\n` +
     `3. 위트 있고 재치 넘치게 써주세요. 읽는 사람이 피식 웃을 수 있을 정도의 유머 감각을 담아도 좋습니다.\n` +
     `4. 너무 딱딱하거나 교과서적인 표현은 피하고, 살아있는 자연스러운 문장으로 써주세요.\n` +
-    `5. 순화된 결과 문장만 출력하고, 설명·주석·인용부호는 절대 붙이지 마세요.\n\n` +
-    `원문: ${safeText}`;
+    `5. 순화된 결과 문장만 출력하고, 설명·주석·인용부호는 절대 붙이지 마세요.\n` +
+    lengthRule +
+    `\n원문: ${safeText}`;
 
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`;
 

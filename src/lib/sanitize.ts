@@ -34,6 +34,7 @@ export type ValidationResult =
 export function validateInput(raw: string, maxChars = MAX_CHARS): ValidationResult {
   const normalized = normalizeText(raw);
   if (!normalized) return { ok: false, error: '할 말을 입력해주세요 😅' };
+  if ([...normalized].length <= 5) return { ok: false, error: '너무 짧아요. 6자 이상 입력해주세요 ✍️' };
   if ([...normalized].length > maxChars) return { ok: false, error: `${maxChars}자 이내로 입력해주세요.` };
   return { ok: true, normalized };
 }
