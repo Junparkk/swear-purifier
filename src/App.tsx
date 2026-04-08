@@ -10,7 +10,7 @@ import { purifyText } from "@/lib/gemini";
 type Step = "form" | "loading" | "result";
 
 const MARQUEE_TEXT = [
-  "나는 화가났지만 어른이니까",
+  "화가났지만 나는 어른이니까",
   "★",
   "욕도 품격있게",
   "★",
@@ -290,7 +290,7 @@ export default function App() {
                   fontSize: "clamp(1.6rem,8vw,2.4rem)",
                 }}
               >
-                화ㄱr났ズl口ざ ㄴr는
+                화ㄱr났ズl口ざ
               </div>
               <div
                 className="leading-[1.2] tracking-tight text-[#1a1a2e] mt-1 relative z-[2]"
@@ -301,7 +301,7 @@ export default function App() {
                   fontSize: "clamp(1.6rem,8vw,2.4rem)",
                 }}
               >
-                øł른○lLI까
+                ㄴr는 øł른○lLI까
               </div>
               <div
                 className="mt-3 tracking-wide relative z-[2]"
