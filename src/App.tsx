@@ -76,6 +76,7 @@ export default function App() {
       });
       setResult(purified);
       setStep("result");
+      window.scrollTo({ top: 0, behavior: 'instant' });
     } catch (e) {
       toast.error("오류가 발생했어요. 다시 시도해주세요.");
       console.error(e);

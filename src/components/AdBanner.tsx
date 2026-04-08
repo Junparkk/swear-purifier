@@ -24,7 +24,7 @@ export function AdBanner({ position = 'bottom' }: AdBannerProps) {
   }, []);
 
   return (
-    <div className={`w-full overflow-hidden ${position === 'bottom' ? 'mt-2' : 'mb-2'}`} style={{ minHeight: 60 }}>
+    <div className={`w-full overflow-hidden ${position === 'bottom' ? 'mt-2' : 'mb-2'}`}>
       <ins
         className="adsbygoogle"
         style={{ display: 'block' }}
