@@ -330,10 +330,13 @@ export default function App() {
 
       {/* 푸터 */}
       {step === "form" && (
-        <div className="relative z-10 max-w-[520px] mx-auto px-4 pb-4 text-center">
+        <div className="relative z-10 max-w-[520px] mx-auto px-4 pb-4 text-center space-y-1">
+          <p className="text-[11px] font-bold tracking-widest" style={{ color: 'rgba(255,110,180,0.35)', fontFamily: "'Byeoljari', sans-serif" }}>
+            ✦ by Outback Studio ✦
+          </p>
           <a
             href="/privacy.html"
-            className="text-[11px] text-white/30 hover:text-white/50 transition-colors inline-block"
+            className="text-[10px] text-white/20 hover:text-white/40 transition-colors inline-block"
           >
             개인정보처리방침
           </a>

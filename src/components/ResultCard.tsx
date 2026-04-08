@@ -209,6 +209,11 @@ export function ResultCard({ result, onCopy, onReset }: ResultCardProps) {
           </div>
         ))}
       </div>
+
+      {/* 브랜드 */}
+      <p className="text-center text-[9px] tracking-widest mt-1 shrink-0" style={{ color: 'rgba(255,110,180,0.25)', fontFamily: "'Byeoljari', sans-serif" }}>
+        ✦ by Outback Studio ✦
+      </p>
     </div>
   );
 }
