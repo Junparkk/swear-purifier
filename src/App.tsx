@@ -153,7 +153,7 @@ export default function App() {
             <span
               key={i}
               className="text-[11px] font-bold text-white px-5 tracking-widest"
-              style={{ textShadow: "1px 1px 0 rgba(0,0,0,0.4)" }}
+              style={{ fontFamily: "'Byeoljari', sans-serif", textShadow: "1px 1px 0 rgba(0,0,0,0.4)" }}
             >
               {t}
             </span>
@@ -165,8 +165,8 @@ export default function App() {
       <div
         className={`relative z-10 max-w-[520px] mx-auto px-2 pt-[28px] ${
           step === "result"
-            ? "h-[calc(100svh-28px)] flex flex-col px-4 py-4"
-            : "pb-20 px-4"
+            ? "h-[calc(100svh-28px)] flex flex-col px-4 pb-4"
+            : "pb-4 px-4"
         }`}
       >
         {/* 피처폰 헤더 — 결과 화면에서는 숨김 */}
@@ -189,94 +189,56 @@ export default function App() {
             {/* 상태바 */}
             <div className="relative overflow-hidden rounded-t-lg px-4 pt-2 pb-2 mb-3 -mx-4 -mt-4">
               <div className="flex justify-between items-center relative z-[2]">
-                {/* 신호 + 안테나 */}
-                <div className="flex items-center gap-1.5">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="#1a1a2e"
-                  >
-                    <rect x="2" y="14" width="3" height="6" rx="1" />
-                    <rect x="7" y="10" width="3" height="10" rx="1" />
-                    <rect x="12" y="6" width="3" height="14" rx="1" />
-                    <rect
-                      x="17"
-                      y="2"
-                      width="3"
-                      height="18"
-                      rx="1"
-                      opacity="0.3"
-                    />
+                {/* 안테나 + 신호 + 봉투 */}
+                <div className="flex items-center gap-2">
+                  {/* T자 안테나 */}
+                  <svg width="10" height="20" viewBox="0 0 10 20" fill="#1a1a2e">
+                    <rect x="0" y="0" width="10" height="2" />
+                    <rect x="0" y="2" width="2" height="4" />
+                    <rect x="8" y="2" width="2" height="4" />
+                    <rect x="4" y="0" width="2" height="20" />
                   </svg>
-                  {/* 안테나 픽토그램 */}
-                  <svg
-                    width="12"
-                    height="16"
-                    viewBox="0 0 12 20"
-                    fill="#1a1a2e"
-                  >
-                    <line
-                      x1="6"
-                      y1="20"
-                      x2="6"
-                      y2="8"
-                      stroke="#1a1a2e"
-                      strokeWidth="2"
-                    />
-                    <line
-                      x1="6"
-                      y1="8"
-                      x2="1"
-                      y2="2"
-                      stroke="#1a1a2e"
-                      strokeWidth="1.5"
-                    />
-                    <line
-                      x1="6"
-                      y1="8"
-                      x2="11"
-                      y2="2"
-                      stroke="#1a1a2e"
-                      strokeWidth="1.5"
-                    />
-                    <circle cx="6" cy="8" r="2" fill="#1a1a2e" />
+                  {/* 신호 막대 5칸 */}
+                  <svg width="18" height="14" viewBox="0 0 18 14" fill="#1a1a2e">
+                    <rect x="0"  y="11" width="2" height="3" />
+                    <rect x="4"  y="8"  width="2" height="6" />
+                    <rect x="8"  y="5"  width="2" height="9" />
+                    <rect x="12" y="2"  width="2" height="12" opacity="0.4"/>
+                    <rect x="16" y="0"  width="2" height="14" opacity="0.2"/>
+                  </svg>
+                  {/* 봉투 */}
+                  <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="#1a1a2e" strokeWidth="1.5">
+                    <rect x="1" y="1" width="16" height="12" rx="1" fill="#1a1a2e" fillOpacity="0.15"/>
+                    <polyline points="1,1 9,8 17,1" fill="none"/>
+                    <line x1="1" y1="13" x2="6" y2="7"/>
+                    <line x1="17" y1="13" x2="12" y2="7"/>
                   </svg>
                 </div>
-                {/* 시간 */}
-                <span
-                  className="font-mono font-bold text-[13px] tracking-widest"
-                  style={{ color: "#1a1a2e" }}
-                >
-                  {new Date().toLocaleTimeString("ko-KR", {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    hour12: false,
-                  })}
-                </span>
-                {/* 배터리 */}
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="#1a1a2e">
-                  <rect x="1" y="7" width="18" height="10" rx="2" />
-                  <rect x="19" y="10" width="4" height="4" rx="1" />
-                  <rect
-                    x="3"
-                    y="9"
-                    width="5"
-                    height="6"
-                    rx="1"
-                    fill="#1a1a2e"
-                    opacity="0.7"
-                  />
-                  <rect
-                    x="10"
-                    y="9"
-                    width="5"
-                    height="6"
-                    rx="1"
-                    fill="#1a1a2e"
-                    opacity="0.7"
-                  />
-                </svg>
+                {/* 시간 + 배터리 */}
+                <div className="flex items-center gap-2">
+                  <span
+                    className="font-mono font-bold tracking-widest"
+                    style={{ color: "#1a1a2e", fontSize: 15 }}
+                  >
+                    {new Date().toLocaleTimeString("ko-KR", {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      hour12: false,
+                    })}
+                  </span>
+                  {/* 배터리: 세로막대 4칸 + 오른쪽 nub */}
+                  <svg width="26" height="14" viewBox="0 0 26 14" fill="#1a1a2e">
+                    {/* 외곽 */}
+                    <rect x="0" y="0" width="22" height="14" rx="1" fill="none" stroke="#1a1a2e" strokeWidth="1.5"/>
+                    {/* nub */}
+                    <rect x="22" y="4" width="4" height="6" rx="1"/>
+                    {/* 세로막대 4칸 */}
+                    <rect x="3"  y="3" width="3" height="8"/>
+                    <rect x="8"  y="3" width="3" height="8"/>
+                    <rect x="13" y="3" width="3" height="8"/>
+                    <rect x="18" y="3" width="1.5" height="8" opacity="0.25"/>
+                  </svg>
+                </div>
               </div>
             </div>
             {/* 타이틀 */}
@@ -353,7 +315,7 @@ export default function App() {
         {step === "loading" && <LoadingScreen />}
 
         {step === "result" && result && (
-          <div className="flex-1 min-h-0">
+          <div className="flex-1 min-h-0 mt-4">
             <ResultCard
               result={result}
               onCopy={handleCopy}
@@ -371,7 +333,7 @@ export default function App() {
       )}
 
       {/* 푸터 */}
-      <footer className="relative z-10 text-center pb-4 mt-2">
+      <footer className="relative z-10 text-center pb-3 mt-1">
         <a
           href="/privacy.html"
           className="text-[11px] text-white/30 hover:text-white/50 transition-colors"
