@@ -9,7 +9,7 @@ const LINES = [
   { text: '소리도 지르고 싶고,', size: '1.8rem', weight: 700, gap: 0 },
   { text: '그냥 막 뱉어버리고 싶었던', size: '1.8rem', weight: 700, gap: 0 },
   { text: '날들이 있었잖아.', size: '1.8rem', weight: 700, gap: 0 },
-  { text: '근데 이제 우리 어른이잖아.', size: '2.2rem', weight: 700, gap: 48 },
+  { text: '근데 이제 우리 어른이잖아.', size: '1.9rem', weight: 700, gap: 48 },
   { text: '그래도 괜찮아.', size: '2rem', weight: 700, gap: 0 },
   { text: '하고 싶은 말 여기다 써.', size: '1.8rem', weight: 700, gap: 0 },
   { text: '대신 어른답게 바꿔줄게.', size: '1.8rem', weight: 700, gap: 32 },
@@ -49,10 +49,14 @@ export function SplashScreen({ onDone }: SplashScreenProps) {
         zIndex: 2,
       }} />
 
-      {/* 크레딧 롤 */}
+      {/* 크레딧 롤 — 상단 80% 영역만 클립, 그 아래는 안 보임 */}
       <div
-        className="absolute left-0 right-0 text-center px-8"
-        style={{ animation: 'creditRollMid 10s linear both', zIndex: 3 }}
+        className="absolute left-0 right-0"
+        style={{ top: 0, bottom: '20%', overflow: 'hidden', zIndex: 3 }}
+      >
+      <div
+        className="left-0 right-0 text-center px-8 absolute w-full"
+        style={{ animation: 'creditRollMid 10s linear both' }}
       >
         {LINES.map((line, i) => {
           const isMain = line.text === '근데 이제 우리 어른이잖아.';
@@ -75,6 +79,7 @@ export function SplashScreen({ onDone }: SplashScreenProps) {
             </div>
           );
         })}
+      </div>
       </div>
 
       {/* tap to skip */}
