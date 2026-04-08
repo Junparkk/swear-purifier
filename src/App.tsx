@@ -3,6 +3,7 @@ import { toast, Toaster } from 'sonner';
 import { PurifyForm } from '@/components/PurifyForm';
 import { ResultCard } from '@/components/ResultCard';
 import { LoadingScreen } from '@/components/LoadingScreen';
+import { AdBanner } from '@/components/AdBanner';
 import { validateInput } from '@/lib/sanitize';
 import { purifyText } from '@/lib/gemini';
 
@@ -225,6 +226,23 @@ export default function App() {
 
 
       </div>
+
+      {/* 하단 광고 배너 */}
+      {step === 'form' && (
+        <div className="relative z-10 max-w-[520px] mx-auto px-4">
+          <AdBanner position="bottom" />
+        </div>
+      )}
+
+      {/* 푸터 */}
+      <footer className="relative z-10 text-center pb-4 mt-2">
+        <a
+          href="/privacy.html"
+          className="text-[11px] text-white/30 hover:text-white/50 transition-colors"
+        >
+          개인정보처리방침
+        </a>
+      </footer>
 
       <Toaster richColors position="bottom-center" />
     </>
