@@ -211,7 +211,7 @@ body::before {
 
 /* 중간부터 시작 */
 @keyframes creditRollMid {
-  0%   { transform: translateY(30vh); }
+  0%   { transform: translateY(65vh); }
   100% { transform: translateY(-100%); }
 }
 

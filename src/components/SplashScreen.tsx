@@ -5,24 +5,22 @@ interface SplashScreenProps {
 }
 
 const LINES = [
-  { text: '✦', size: '2.5rem', weight: 700, gap: 0 },
   { text: '욕도 하고 싶고,', size: '1.8rem', weight: 700, gap: 0 },
   { text: '소리도 지르고 싶고,', size: '1.8rem', weight: 700, gap: 0 },
   { text: '그냥 막 뱉어버리고 싶었던', size: '1.8rem', weight: 700, gap: 0 },
-  { text: '날들이 있었잖아.', size: '1.8rem', weight: 700, gap: 40 },
-  { text: '근데 이제 우리 어른이잖아.', size: '1.5rem', weight: 400, gap: 40 },
+  { text: '날들이 있었잖아.', size: '1.8rem', weight: 700, gap: 0 },
+  { text: '근데 이제 우리 어른이잖아.', size: '2.2rem', weight: 700, gap: 48 },
   { text: '그래도 괜찮아.', size: '2rem', weight: 700, gap: 0 },
   { text: '하고 싶은 말 여기다 써.', size: '1.8rem', weight: 700, gap: 0 },
   { text: '대신 어른답게 바꿔줄게.', size: '1.8rem', weight: 700, gap: 32 },
-  { text: '✦', size: '2.5rem', weight: 700, gap: 0 },
 ];
 
 export function SplashScreen({ onDone }: SplashScreenProps) {
   const [fading, setFading] = useState(false);
 
   useEffect(() => {
-    const fadeTimer = setTimeout(() => setFading(true), 8000);
-    const doneTimer = setTimeout(() => onDone(), 9000);
+    const fadeTimer = setTimeout(() => setFading(true), 9000);
+    const doneTimer = setTimeout(() => onDone(), 10000);
     return () => { clearTimeout(fadeTimer); clearTimeout(doneTimer); };
   }, [onDone]);
 
@@ -51,33 +49,32 @@ export function SplashScreen({ onDone }: SplashScreenProps) {
         zIndex: 2,
       }} />
 
-      {/* CRT 비네트 */}
-      <div className="absolute inset-0 pointer-events-none" style={{
-        background: 'radial-gradient(ellipse at center, transparent 60%, rgba(0,0,30,0.45) 100%)',
-        zIndex: 2,
-      }} />
-
       {/* 크레딧 롤 */}
       <div
         className="absolute left-0 right-0 text-center px-8"
-        style={{ animation: 'creditRollMid 9s linear both', zIndex: 3 }}
+        style={{ animation: 'creditRollMid 10s linear both', zIndex: 3 }}
       >
-        {LINES.map((line, i) => (
-          <div
-            key={i}
-            style={{
-              fontFamily: "'Byeoljari', 'Black Han Sans', sans-serif",
-              fontSize: line.size,
-              fontWeight: line.weight,
-              color: '#0a0a2e',
-              lineHeight: 1.5,
-              marginTop: line.gap,
-              textShadow: '0 0 12px rgba(255,255,255,0.5), 1px 1px 0 rgba(255,255,255,0.3)',
-            }}
-          >
-            {line.text}
-          </div>
-        ))}
+        {LINES.map((line, i) => {
+          const isMain = line.text === '근데 이제 우리 어른이잖아.';
+          return (
+            <div
+              key={i}
+              style={{
+                fontFamily: "'Byeoljari', 'Black Han Sans', sans-serif",
+                fontSize: line.size,
+                fontWeight: line.weight,
+                color: isMain ? '#ffffff' : '#0a0a2e',
+                lineHeight: 1.5,
+                marginTop: line.gap,
+                textShadow: isMain
+                  ? '0 0 24px rgba(255,255,255,0.9), 0 0 48px rgba(255,255,255,0.5), 1px 1px 0 rgba(0,0,50,0.4)'
+                  : '0 0 12px rgba(255,255,255,0.5), 1px 1px 0 rgba(255,255,255,0.3)',
+              }}
+            >
+              {line.text}
+            </div>
+          );
+        })}
       </div>
 
       {/* tap to skip */}
