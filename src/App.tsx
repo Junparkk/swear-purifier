@@ -7,6 +7,7 @@ import { SplashScreen } from "@/components/SplashScreen";
 import { validateInput } from "@/lib/sanitize";
 import { purifyText } from "@/lib/gemini";
 import { trackEvent } from "@/lib/analytics";
+import { InfoSection } from "@/components/InfoSection";
 
 type Step = "form" | "loading" | "result";
 
@@ -317,6 +318,7 @@ export default function App() {
               <span className="relative z-10">🧼 순화하기</span>
               <div className="absolute inset-0 bg-gradient-to-b from-white/15 to-transparent pointer-events-none" />
             </button>
+            <InfoSection />
           </>
         )}
 
