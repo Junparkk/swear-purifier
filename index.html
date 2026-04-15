@@ -37,5 +37,73 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- 검색엔진/광고 크롤러용 정적 콘텐츠 (JS 미지원 환경) -->
+    <noscript>
+      <style>
+        .ns-wrap { max-width: 680px; margin: 0 auto; padding: 2rem 1rem; font-family: 'Noto Sans KR', sans-serif; background: #0f0f23; color: #e0e0e0; line-height: 1.8; }
+        .ns-wrap h1 { font-size: 1.8rem; color: #ff6eb4; margin-bottom: 0.5rem; }
+        .ns-wrap h2 { font-size: 1.2rem; color: #b366ff; margin: 1.8rem 0 0.5rem; }
+        .ns-wrap p, .ns-wrap li { font-size: 0.95rem; color: #ccc; margin-bottom: 0.5rem; }
+        .ns-wrap ul { padding-left: 1.2rem; margin-bottom: 1rem; }
+        .ns-wrap .tag { display: inline-block; background: rgba(255,110,180,0.15); border: 1px solid rgba(255,110,180,0.4); color: #ff6eb4; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin: 0.2rem; }
+        .ns-wrap a { color: #7ec8e3; }
+      </style>
+      <div class="ns-wrap">
+        <h1>화가났지만 나는 어른이니까</h1>
+        <p>욕설과 거친 말을 AI가 품격 있게 바꿔드리는 무료 서비스입니다. 참기 힘든 감정 표현을 상황에 맞는 세련된 언어로 변환해 드립니다.</p>
+
+        <h2>서비스 소개</h2>
+        <p>살다 보면 욕이 나오는 순간이 있습니다. 직장 상사의 무리한 요구, 예의 없는 상대방, 답답한 상황들. 하지만 감정 그대로 내뱉으면 관계가 망가지죠.</p>
+        <p>「화가났지만 나는 어른이니까」는 Google Gemini AI 기반으로 거친 표현을 상황에 맞는 품격 있는 언어로 즉시 변환해 드립니다. 하고 싶은 말은 다 하되, 어른스럽게 전달하세요.</p>
+
+        <h2>주요 기능</h2>
+        <ul>
+          <li><strong>AI 욕설 순화</strong> — 입력한 거친 표현을 문맥과 감정을 유지하면서 세련되게 바꿔드립니다.</li>
+          <li><strong>분노 강도 조절</strong> — 살짝 불편한 정도부터 극도의 분노까지 5단계로 설정 가능합니다.</li>
+          <li><strong>4가지 순화 스타일</strong> — 직장인, 점잖게, 시적으로, 은근히 비꼬기 스타일을 선택하세요.</li>
+          <li><strong>즉시 복사</strong> — 순화된 결과를 한 번에 복사해 바로 사용할 수 있습니다.</li>
+        </ul>
+
+        <h2>이런 상황에 써보세요</h2>
+        <ul>
+          <li>직장 상사나 동료에게 보낼 메시지가 너무 감정적일 때</li>
+          <li>SNS에 올릴 글인데 표현이 과격하다 싶을 때</li>
+          <li>거래처나 고객에게 불만을 정중하게 전달해야 할 때</li>
+          <li>가족이나 친구와의 갈등 상황에서 감정을 정리하고 싶을 때</li>
+          <li>화가 많이 났지만 관계를 망치고 싶지 않을 때</li>
+        </ul>
+
+        <h2>순화 스타일 안내</h2>
+        <p><strong>직장인 모드:</strong> 비즈니스 커뮤니케이션에 적합한 정중하고 프로페셔널한 표현으로 변환합니다. 감정은 절제하되 요점은 명확하게 전달합니다.</p>
+        <p><strong>점잖게 모드:</strong> 일상 대화에서 쓸 수 있는 차분하고 품위 있는 표현으로 바꿔드립니다. 상대방을 불편하게 하지 않으면서도 의사를 전달합니다.</p>
+        <p><strong>시적으로 모드:</strong> 감정을 문학적이고 우아한 언어로 표현합니다. 분노조차 예술로 승화시켜 드립니다.</p>
+        <p><strong>은근히 비꼬기 모드:</strong> 직접적으로 화를 내지 않으면서도 뉘앙스로 불만을 전달하는 세련된 표현을 만들어 드립니다.</p>
+
+        <h2>자주 묻는 질문</h2>
+        <p><strong>Q. 입력한 내용이 저장되나요?</strong><br />아니오. 입력한 텍스트는 AI 처리 후 즉시 삭제되며 별도로 저장되지 않습니다.</p>
+        <p><strong>Q. 어떤 AI를 사용하나요?</strong><br />Google Gemini AI를 사용합니다. 안전하고 신뢰할 수 있는 AI 모델입니다.</p>
+        <p><strong>Q. 무료인가요?</strong><br />네, 완전 무료로 이용 가능합니다. 회원가입도 필요 없습니다.</p>
+        <p><strong>Q. 어떤 언어를 지원하나요?</strong><br />현재 한국어를 중심으로 서비스하고 있습니다.</p>
+
+        <h2>서비스 이용 방법</h2>
+        <p>1. 하고 싶은 말을 입력창에 솔직하게 적어주세요. 욕이나 거친 표현도 괜찮습니다.<br />
+        2. 분노 강도 슬라이더를 현재 감정 수준에 맞게 조절하세요.<br />
+        3. 원하는 순화 스타일(직장인, 점잖게, 시적으로, 은근히 비꼬기)을 선택하세요.<br />
+        4. 순화하기 버튼을 누르면 AI가 잠시 후 품격 있는 표현으로 바꿔드립니다.<br />
+        5. 결과가 마음에 들면 복사 버튼으로 즉시 사용하세요.</p>
+
+        <p>
+          <span class="tag">#욕설순화</span>
+          <span class="tag">#AI순화기</span>
+          <span class="tag">#감정표현</span>
+          <span class="tag">#직장인</span>
+          <span class="tag">#어른의언어</span>
+          <span class="tag">#품격있는표현</span>
+        </p>
+
+        <p>JavaScript를 활성화하면 서비스를 이용하실 수 있습니다. | <a href="/about.html">서비스 소개</a> | <a href="/privacy.html">개인정보처리방침</a></p>
+      </div>
+    </noscript>
   </body>
 </html>

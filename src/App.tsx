@@ -341,12 +341,21 @@ export default function App() {
           <p className="text-[11px] font-bold tracking-widest" style={{ color: 'rgba(255,110,180,0.35)', fontFamily: "'Byeoljari', sans-serif" }}>
             ✦ by Outback Studio ✦
           </p>
-          <a
-            href="/privacy.html"
-            className="text-[10px] text-white/20 hover:text-white/40 transition-colors inline-block"
-          >
-            개인정보처리방침
-          </a>
+          <div className="flex gap-3 justify-center">
+            <a
+              href="/about.html"
+              className="text-[10px] text-white/20 hover:text-white/40 transition-colors inline-block"
+            >
+              서비스 소개
+            </a>
+            <span className="text-[10px] text-white/10">|</span>
+            <a
+              href="/privacy.html"
+              className="text-[10px] text-white/20 hover:text-white/40 transition-colors inline-block"
+            >
+              개인정보처리방침
+            </a>
+          </div>
         </div>
       )}
 
