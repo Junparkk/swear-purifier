@@ -8,6 +8,7 @@ import { validateInput } from "@/lib/sanitize";
 import { purifyText } from "@/lib/gemini";
 import { trackEvent } from "@/lib/analytics";
 import { InfoSection } from "@/components/InfoSection";
+import { useAITAd } from "@/hooks/useAITAd";
 
 type Step = "form" | "loading" | "result";
 
@@ -62,6 +63,8 @@ export default function App() {
   const [angerLevel, setAngerLevel] = useState(3);
   const [result, setResult] = useState<string | null>(null);
 
+  const { showAdIfReady } = useAITAd();
+
   const handlePurify = useCallback(async () => {
     const validation = validateInput(text);
     if (!validation.ok) {
@@ -70,6 +73,10 @@ export default function App() {
     }
 
     setStep("loading");
+
+    // AIT 환경: 로딩 화면 뒤에서 전면 광고 표시 후 진행
+    // 웹(Vercel) 환경: 즉시 resolve되어 그냥 진행
+    await showAdIfReady();
 
     try {
       const purified = await purifyText({
@@ -86,7 +93,7 @@ export default function App() {
       console.error(e);
       setStep("form");
     }
-  }, [text, style, angerLevel]);
+  }, [text, style, angerLevel, showAdIfReady]);
 
   const handleCopy = useCallback(() => {
     if (!result) return;
