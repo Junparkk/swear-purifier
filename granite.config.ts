@@ -3,9 +3,9 @@ import { defineConfig } from '@apps-in-toss/web-framework/config';
 export default defineConfig({
   appName: 'swear-purifier',
   brand: {
-    displayName: '화가났지만 나는 어른이니까',
+    displayName: '욕 순화기',
     primaryColor: '#ff6eb4',
-    icon: 'https://swear-purifier.vercel.app/favicon.png',
+    icon: 'https://swear-purifier.vercel.app/icon.png',
   },
   web: {
     host: 'localhost',
