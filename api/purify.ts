@@ -11,8 +11,13 @@ const ANGER_DESC = ['', '살짝 불편한', '약간 짜증난', '중간 불만',
 const MAX_CHARS = 300;
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // CORS — AIT(토스 앱) 등 외부 오리진 허용
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  // CORS — AIT 도메인 허용
+  const allowed = [
+    'https://swear-purifier.apps.tossmini.com',
+    'https://swear-purifier.private-apps.tossmini.com',
+  ];
+  const origin = req.headers.origin ?? '';
+  res.setHeader('Access-Control-Allow-Origin', allowed.includes(origin) ? origin : '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
