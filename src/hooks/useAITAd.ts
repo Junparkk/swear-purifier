@@ -1,17 +1,16 @@
 import { useEffect, useRef } from 'react';
 import { GoogleAdMob } from '@apps-in-toss/web-framework';
 
-// 프로덕션 AIT 광고 그룹 ID는 .env에 VITE_AIT_AD_GROUP_ID로 설정
-// 토스 개발자 콘솔에서 발급받은 ID를 넣으세요 (예: ait.v2.live.xxxxxxxxxxxxxxxx)
-const AD_GROUP_ID =
-  import.meta.env.VITE_AIT_AD_GROUP_ID || 'ait-ad-test-interstitial-id';
+// 전면형 광고 그룹 ID — 토스 개발자 콘솔에서 발급 (예: ait.v2.live.xxxxxxxxxxxxxxxx)
+const INTERSTITIAL_AD_GROUP_ID =
+  import.meta.env.VITE_AIT_INTERSTITIAL_AD_GROUP_ID || 'ait-ad-test-interstitial-id';
 
 const AD_RETRY_CONFIG = {
   MAX_ATTEMPTS: 3,
   DELAYS_MS: [1000, 3000, 5000],
 } as const;
 
-function isAITSupported(): boolean {
+function isInterstitialSupported(): boolean {
   try {
     return GoogleAdMob.loadAppsInTossAdMob.isSupported() === true;
   } catch {
@@ -26,7 +25,7 @@ export function useAITAd() {
   const retryTimeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const loadAd = () => {
-    if (!isAITSupported()) return;
+    if (!isInterstitialSupported()) return;
 
     cleanupRef.current?.();
     cleanupRef.current = undefined;
@@ -34,7 +33,7 @@ export function useAITAd() {
 
     try {
       const cleanup = GoogleAdMob.loadAppsInTossAdMob({
-        options: { adGroupId: AD_GROUP_ID },
+        options: { adGroupId: INTERSTITIAL_AD_GROUP_ID },
         onEvent: (event) => {
           if (event.type === 'loaded') {
             adLoadedRef.current = true;
@@ -67,8 +66,8 @@ export function useAITAd() {
   }, []);
 
   /**
-   * AIT 환경에서 광고를 표시하고, 닫히거나 실패하면 resolve.
-   * AIT 미지원 환경(Vercel 웹)에서는 즉시 resolve.
+   * AIT 환경에서 전면 광고를 표시하고 닫히면 resolve.
+   * 웹(Vercel) 환경에서는 즉시 resolve.
    */
   const showAdIfReady = (): Promise<void> => {
     return new Promise((resolve) => {
@@ -84,7 +83,7 @@ export function useAITAd() {
         }
 
         GoogleAdMob.showAppsInTossAdMob({
-          options: { adGroupId: AD_GROUP_ID },
+          options: { adGroupId: INTERSTITIAL_AD_GROUP_ID },
           onEvent: (event) => {
             if (event.type === 'dismissed' || event.type === 'failedToShow') {
               resolve();

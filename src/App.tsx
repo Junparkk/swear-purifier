@@ -9,6 +9,7 @@ import { purifyText } from "@/lib/gemini";
 import { trackEvent } from "@/lib/analytics";
 import { InfoSection } from "@/components/InfoSection";
 import { useAITAd } from "@/hooks/useAITAd";
+import { TossAdsBanner } from "@/components/TossAdsBanner";
 
 type Step = "form" | "loading" | "result";
 
@@ -325,6 +326,7 @@ export default function App() {
               <span className="relative z-10">🧼 순화하기</span>
               <div className="absolute inset-0 bg-gradient-to-b from-white/15 to-transparent pointer-events-none" />
             </button>
+            <TossAdsBanner />
             <InfoSection />
           </>
         )}
