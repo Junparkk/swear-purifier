@@ -4,8 +4,12 @@ export interface PurifyOptions {
   angerLevel: number;
 }
 
+// Vercel 배포: VITE_API_BASE_URL 미설정 → 상대 URL '/api/purify'
+// AIT 빌드:   VITE_API_BASE_URL=https://swear-purifier.vercel.app → 절대 URL
+const API_URL = `${import.meta.env.VITE_API_BASE_URL ?? ''}/api/purify`;
+
 export async function purifyText({ text, style, angerLevel }: PurifyOptions): Promise<string> {
-  const res = await fetch('/api/purify', {
+  const res = await fetch(API_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ text, style, angerLevel }),
